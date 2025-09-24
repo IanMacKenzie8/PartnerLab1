@@ -1,24 +1,8 @@
-//
-//  ContentView.swift
-//  Lab1
-//
-//  Created by cisstudent on 9/23/25.
-//
-
-import SwiftUI
-
-struct ContentView: View {
-    var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
-        }
-        .padding()
-    }
-}
-test test test
-#Preview {
-    ContentView()
-}
+/*
+ ASSIGNMENT: LAB1
+ 
+ GROUP #1
+ 
+ PARTNERS: IAN MACKENZIE, ALEKS LUBZCYNSKIU
+ SEPTEMBER 23, 2025
+ */
