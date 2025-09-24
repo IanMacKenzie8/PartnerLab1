@@ -12,7 +12,7 @@ import SwiftUI
 struct ContentView: View {
     
     // images
-    let dognames: [String] = [
+    let dogNames: [String] = [
         "Airedale Terrier",
         "American Foxhound",
         "Dutch Shepherd",
@@ -42,7 +42,66 @@ struct ContentView: View {
     // making the dictionary from the arrays
     var dogDict: [String: String] {
         Dictionary(uniqueKeysWithValues: zip(dogNames, dogDescriptions))
+    } // You wrote your thing wrong lmao capitalize the N yo
+    
+    // Selected dog using state
+    @State private var selectedDog: String? = nil
+    
+    // columns
+    private var rows: [[String]] {
+        var r: [[String]] = []
+        var i = 0
+        while i < dogNames.count {
+            let end = min(i+2, dogNames.count)
+            r.append(Array(dogNames[i..<end]))
+            i += 2
+        }
+        return r
+    }
+    
+    var body: some View {
+        // put the grid thingy here
     }
 }
 
-    // Alright I did it, can you start on the columns
+// Use this for the image cards i added some style to it
+struct DogCard: View {
+    let name: String
+    let isSelected: Bool
+    
+    var body: some View {
+        ZStack(alignment: .bottomLeading) {
+            Image(name)
+                .resizable()
+                .scaledToFill()
+                .frame(height: 140)
+                .frame(maxWidth: .infinity)
+                .clipped()
+                .clipShape(RoundedRectangle(cornerRadius: 18, style: .continuous))
+                .overlay(
+                    RoundedRectangle(cornerRadius: 18, style: .continuous)
+                        .stroke(isSelected ? Color.accentColor : Color.black.opacity(0.08),
+                                lineWidth: isSelected ? 3 : 1)
+                )
+                .shadow(radius: 3, y: 2)
+            
+            Text(name)
+                .font(.caption).bold()
+                .foregroundColor(.white)
+                .padding(.horizontal, 8)
+                .padding(.vertical, 6)
+                .background(Color.black.opacity(0.35), in: Capsule())
+                .padding(8)
+        }
+        .frame(maxWidth: .infinity)
+        .contentShape(RoundedRectangle(cornerRadius: 18, style: .continuous))
+        .accessibilityLabel(Text(name))
+    }
+}
+
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        ContentView()
+            .previewDisplayName("Lab1 Preview")
+    }
+}
