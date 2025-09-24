@@ -60,48 +60,107 @@ struct ContentView: View {
     }
     
     var body: some View {
-        // put the grid thingy here
-    }
-}
-
-// Use this for the image cards i added some style to it
-struct DogCard: View {
-    let name: String
-    let isSelected: Bool
-    
-    var body: some View {
-        ZStack(alignment: .bottomLeading) {
-            Image(name)
-                .resizable()
-                .scaledToFill()
-                .frame(height: 110)
-                .frame(maxWidth: .infinity)
-                .clipped()
-                .clipShape(RoundedRectangle(cornerRadius: 18, style: .continuous))
-                .overlay(
-                    RoundedRectangle(cornerRadius: 18, style: .continuous)
-                        .stroke(isSelected ? Color.accentColor : Color.black.opacity(0.08),
-                                lineWidth: isSelected ? 3 : 1)
-                )
-                .shadow(radius: 3, y: 2)
-            
-            Text(name)
-                .font(.caption).bold()
-                .foregroundColor(.white)
-                .padding(.horizontal, 8)
-                .padding(.vertical, 6)
-                .background(Color.black.opacity(0.35), in: Capsule())
-                .padding(8)
+        NavigationView {
+            ZStack {
+                Color(.systemGroupedBackground).ignoresSafeArea()
+                
+                ScrollView {
+                    VStack(spacing: 16) {
+                        
+                        // instruction text
+                        Text("Tap a dog to see its description.")
+                            .font(.headline)
+                            .multilineTextAlignment(.center)
+                            .padding(.top, 12)
+                        
+                        // grid
+                        ForEach(rows.indices, id: \.self) { idx in
+                            HStack(spacing: 16) {
+                                ForEach(rows[idx], id: \.self) { name in
+                                    DogCard(name: name, isSelected: name == selectedDog)
+                                        .onTapGesture { selectedDog = name }
+                                }
+                                
+                                if rows[idx].count == 1 {
+                                    Spacer(minLength: 0)
+                                }
+                            }
+                            .padding(.horizontal)
+                        }
+                        
+                        //descriptions on the bottom
+                        VStack(alignment: .leading, spacing: 8) {
+                            if let name = selectedDog {
+                                Text(name)
+                                    .font(.title3).bold()
+                                Text(dogDict[name] ?? "No description found.")
+                                    .font(.body)
+                                    .foregroundColor(.primary)
+                            } else {
+                                Text("No dog selected.")
+                                    .font(.subheadline)
+                                    .foregroundColor(.secondary)
+                            }
+                        }
+                        .padding(16)
+                        .background(
+                            RoundedRectangle(cornerRadius: 16, style: .continuous)
+                                .fill(Color(.secondarySystemBackground))
+                        )
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 16, style: .continuous)
+                                .stroke(Color.black.opacity(0.06), lineWidth: 1)
+                        )
+                        .padding(.horizontal)
+                        .padding(.bottom, 24)
+                    }
+                }
+            }
+            .navigationBarTitle("Lab1 - Dog Browser", displayMode: .inline)
         }
-        .frame(maxWidth: .infinity)
-        .contentShape(RoundedRectangle(cornerRadius: 18, style: .continuous))
-        .accessibilityLabel(Text(name))
+    }
+    
+    // Use this for the image cards i added some style to it
+    struct DogCard: View {
+        let name: String
+        let isSelected: Bool
+        
+        var body: some View {
+            ZStack(alignment: .bottomLeading) {
+                Image(name)
+                    .resizable()
+                    .scaledToFill()
+                    .frame(height: 110)
+                    .frame(maxWidth: .infinity)
+                    .clipped()
+                    .clipShape(RoundedRectangle(cornerRadius: 18, style: .continuous))
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 18, style: .continuous)
+                            .stroke(isSelected ? Color.accentColor : Color.black.opacity(0.08),
+                                    lineWidth: isSelected ? 3 : 1)
+                    )
+                    .shadow(radius: 3, y: 2)
+                
+                Text(name)
+                    .font(.caption).bold()
+                    .foregroundColor(.white)
+                    .padding(.horizontal, 8)
+                    .padding(.vertical, 6)
+                    .background(Color.black.opacity(0.35), in: Capsule())
+                    .padding(8)
+            }
+            .frame(maxWidth: .infinity)
+            .contentShape(RoundedRectangle(cornerRadius: 18, style: .continuous))
+            .accessibilityLabel(Text(name))
+        }
+    }
+    
+    struct ContentView_Previews: PreviewProvider {
+        static var previews: some View {
+            ContentView()
+                .previewDisplayName("Lab1 Preview")
+        }
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
-            .previewDisplayName("Lab1 Preview")
-    }
-}
+//Ok I finished, can you redo the comments so its more organized
