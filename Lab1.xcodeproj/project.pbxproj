@@ -6,6 +6,10 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		55A179C52E83A90600FB0EAC /* Screen Recording 2025-09-23 at 9.16.44 PM.mov in Resources */ = {isa = PBXBuildFile; fileRef = 55A179C42E83A90600FB0EAC /* Screen Recording 2025-09-23 at 9.16.44 PM.mov */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		D4A712D02E83872D00D776A9 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -24,6 +28,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		55A179C42E83A90600FB0EAC /* Screen Recording 2025-09-23 at 9.16.44 PM.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = "Screen Recording 2025-09-23 at 9.16.44 PM.mov"; sourceTree = "<group>"; };
 		D4A712C22E83872B00D776A9 /* Lab1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Lab1.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4A712CF2E83872D00D776A9 /* Lab1Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Lab1Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4A712D92E83872D00D776A9 /* Lab1UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Lab1UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -79,6 +84,7 @@
 				D4A712D22E83872D00D776A9 /* Lab1Tests */,
 				D4A712DC2E83872D00D776A9 /* Lab1UITests */,
 				D4A712C32E83872B00D776A9 /* Products */,
+				55A179C42E83A90600FB0EAC /* Screen Recording 2025-09-23 at 9.16.44 PM.mov */,
 			);
 			sourceTree = "<group>";
 		};
@@ -212,6 +218,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				55A179C52E83A90600FB0EAC /* Screen Recording 2025-09-23 at 9.16.44 PM.mov in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
