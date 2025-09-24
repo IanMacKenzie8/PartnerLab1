@@ -74,7 +74,7 @@ struct DogCard: View {
             Image(name)
                 .resizable()
                 .scaledToFill()
-                .frame(height: 140)
+                .frame(height: 110)
                 .frame(maxWidth: .infinity)
                 .clipped()
                 .clipShape(RoundedRectangle(cornerRadius: 18, style: .continuous))
