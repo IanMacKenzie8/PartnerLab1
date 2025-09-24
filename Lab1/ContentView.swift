@@ -42,7 +42,7 @@ struct ContentView: View {
     // making the dictionary from the arrays
     var dogDict: [String: String] {
         Dictionary(uniqueKeysWithValues: zip(dogNames, dogDescriptions))
-    } // You wrote your thing wrong lmao capitalize the N yo
+    }
     
     // Selected dog using state
     @State private var selectedDog: String? = nil
@@ -59,6 +59,7 @@ struct ContentView: View {
         return r
     }
     
+    // grid display
     var body: some View {
         NavigationView {
             ZStack {
@@ -120,7 +121,7 @@ struct ContentView: View {
         }
     }
     
-    // Use this for the image cards i added some style to it
+    // image card
     struct DogCard: View {
         let name: String
         let isSelected: Bool
@@ -163,4 +164,3 @@ struct ContentView: View {
     }
 }
 
-//Ok I finished, can you redo the comments so its more organized
